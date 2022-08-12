@@ -23,8 +23,8 @@ jobs:
           echo "::set-output name=branch_type::release"
         fi
   example3_2:
-  if: needs.example3.outputs.branch_type == 'release'
-      needs: example3
-      uses: evan-certn/actions-ttt/.github/workflows/example4.yaml@main
-      with:
-          TAG_NAME: needs.example3.outputs.tag_name
+    if: needs.example3.outputs.branch_type == 'release'
+    needs: example3
+    uses: evan-certn/actions-ttt/.github/workflows/example4.yaml@main
+    with:
+      TAG_NAME: needs.example3.outputs.tag_name
