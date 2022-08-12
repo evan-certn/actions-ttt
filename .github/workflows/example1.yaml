@@ -12,4 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Example 1 Action
-      run: echo {{ github.repository }} ${{ env.TAG_NAME }}
+      run: echo ${{ github.repository }} ${{ env.TAG_NAME }}
