@@ -12,5 +12,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Example 1 Action
-      run: |
-        git push https://${{ secrets.GITHUB_TOKEN }}@https://github.com/${{ github.repository }} ${{ env.TAG_NAME }} -m "Automated!"
+      run: echo {{ github.repository }} ${{ env.TAG_NAME }}
