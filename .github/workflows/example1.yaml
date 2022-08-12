@@ -1,8 +1,6 @@
 name: Example 1 Workflow
 on:
   push:
-    branches:
-      - main
   workflow_dispatch:
 env:
   TAG_NAME: "tag_${{ github.sha }}_${{ github.run_attempt }}"
