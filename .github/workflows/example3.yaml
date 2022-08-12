@@ -5,7 +5,7 @@ on:
 env:
   TAG_NAME: "tag/${{ github.sha }}/${{ github.run_attempt }}"
 jobs:
-  example4:
+  example3:
     name: Example 3 Job
     runs-on: ubuntu-latest
     env:
