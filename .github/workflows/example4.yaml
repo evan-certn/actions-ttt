@@ -1,0 +1,13 @@
+name: Echo Tag from reusable workflow
+on:
+  workflow_call:
+    inputs:
+      TAG_NAME:
+        type: string
+        required: true
+jobs:
+  Example3_3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Echo Tag Name
+      run: echo ${{ inputs.TAG_NAME }}

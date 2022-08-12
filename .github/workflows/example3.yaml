@@ -1,0 +1,30 @@
+name: Example 3 Workflow
+on:
+  push:
+  workflow_dispatch:
+env:
+  TAG_NAME: "tag/${{ github.sha }}/${{ github.run_attempt }}"
+jobs:
+  example4:
+    name: Example 3 Job
+    runs-on: ubuntu-latest
+    env:
+      TAG_NAME: "release/${{ github.sha }}/${{ github.run_attempt }}"
+    outputs:
+      branch_type: ${{ steps.release_branch_check.outputs.branch_type }}
+      tag_name: ${{ env.TAG_NAME }}
+    steps:
+    - name: Check if branch is release
+      id: release_branch_check
+      run: |
+        pattern="(^release\/.*|^hotfix\/.*)"
+        if [[ ${{ env.TAG_NAME }} =~ $pattern ]]
+        then
+          echo "::set-output name=branch_type::release"
+        fi
+  example3_2:
+  if: needs.example3.outputs.branch_type == 'release'
+      needs: example3
+      uses: evan-certn/actions-ttt/.github/workflows/example4.yaml@main
+      with:
+          TAG_NAME: needs.example3.outputs.tag_name

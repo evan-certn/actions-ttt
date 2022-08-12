@@ -3,7 +3,7 @@ on:
   push:
   workflow_dispatch:
 env:
-  TAG_NAME: "tag_${{ github.sha }}_${{ github.run_attempt }}"
+  TAG_NAME: "tag/${{ github.sha }}/${{ github.run_attempt }}"
 jobs:
   example1:
     name: Example 1 Job

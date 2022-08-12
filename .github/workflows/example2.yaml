@@ -1,0 +1,23 @@
+name: Example 2 Workflow
+on:
+  push:
+  workflow_dispatch:
+env:
+  TAG_NAME: "tag/${{ github.sha }}/${{ github.run_attempt }}"
+jobs:
+  example2:
+    name: Example 2 Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Example 2 Action
+      run: echo ${{ github.repository }} ${{ env.TAG_NAME }}
+
+    - name: Format Tag Name String
+      id: format_tag_name
+      run: |
+        tag_name="${{ env.TAG_NAME }}"
+        formatted_tag_name=${tag_name//\//-} # replace forward slash with -
+        echo "::set-output name=FORMATTED_TAG_NAME::$formatted_tag_name"
+
+    - name: Echo Formatted Tag Name
+      run: echo ${{ steps.format_tag_name.outputs.FORMATTED_TAG_NAME }}
