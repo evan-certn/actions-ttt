@@ -10,5 +10,6 @@ jobs:
   example1:
     name: Example 1
     runs-on: ubuntu-latest
-    run: |
-      git push https://${{ secrets.GITHUB_TOKEN }}@${{ github.repository }} ${{ env.TAG_NAME }} -m "Automated!"
+    steps:
+      run: |
+        git push https://${{ secrets.GITHUB_TOKEN }}@${{ github.repository }} ${{ env.TAG_NAME }} -m "Automated!"
