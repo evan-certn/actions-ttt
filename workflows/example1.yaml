@@ -1,1 +1,7 @@
-
+name: Example 1
+on: [workflow_dispatch,push]
+env:
+  TAG_NAME: "tag_${{ github.sha }}_${{ github.run_attempt }}"
+jobs:
+  run: |
+    git push https://${{ secrets.GITHUB_TOKEN }}@${{ github.repository }} ${{ env.TAG_NAME }}
