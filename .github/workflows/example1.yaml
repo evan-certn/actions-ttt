@@ -13,4 +13,4 @@ jobs:
     steps:
     - name: Example 1 Action
       run: |
-        git push https://${{ secrets.GITHUB_TOKEN }}@${{ github.repository }} ${{ env.TAG_NAME }} -m "Automated!"
+        git push https://${{ secrets.GITHUB_TOKEN }}@https://github.com/${{ github.repository }} ${{ env.TAG_NAME }} -m "Automated!"
