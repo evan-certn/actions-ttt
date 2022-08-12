@@ -27,4 +27,4 @@ jobs:
     needs: example3
     uses: evan-certn/actions-ttt/.github/workflows/example4.yaml@main
     with:
-      TAG_NAME: needs.example3.outputs.tag_name
+      TAG_NAME: ${{ needs.example3.outputs.tag_name }}
