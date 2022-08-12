@@ -1,0 +1,18 @@
+name: Example 5 Workflow
+on:
+  push:
+  workflow_dispatch:
+env:
+  TAG_NAME: ${{ github.sha }} ${{ github.run_attempt }}
+jobs:
+  example1:
+    name: Example 5 Job
+    runs-on: ubuntu-latest
+    steps:
+    - name: Example 5 Action run with Github Actions
+      if: github.actor != 'nektos/act'
+      run: echo ${{ github.repository }} ${{ env.TAG_NAME }}
+
+    - name: Example 5 Action with ACT
+      if: github.actor == 'nektos/act'
+      run: echo ${{ github.repository }} run with ACT
